@@ -41,14 +41,23 @@ function defineMEEP() {
       } else if (Bool === 'toggle') {
         EditElement.contentEditable = EditElement.contentEditable === 'false' ? 'true' : 'false';
       }
+    } else {
+    return;
     }
   };
-  MEEP.AddVariable = function(N, V) {
+  MEEP.AddVar = function(N, V) {
   window[N] = V;
 };
-MEEP.RemoveVariable = function(N) {
+MEEP.RemoveVar = function(N) {
   delete window[N];
 };
+  MEEP.GetVar = function(N) {
+  if (typeof window[N] === 'undefined') {
+  return;
+} else {
+  return window[N];
+}
+  };
 MEEP.EAD = function(Text, Type) {
 if (Type !== 'encode' && Type !== 'decode') {
 return;
