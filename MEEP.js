@@ -120,6 +120,18 @@ tooltipVisible = true;
 return;
 }
 };
+MEEP.State = function(Type) {
+  if (Type == 'save') {
+    localStorage.setItem('SavedState', document.body.innerHTML);
+  } else if (Type == 'load') {
+    var savedContent = localStorage.getItem('SavedState');
+    if (savedContent !== null) {
+      document.body.innerHTML = savedContent;
+    } else {
+      return;
+    }
+  }
+};
 return MEEP;
 }
 window.MEEP = defineMEEP();
