@@ -52,43 +52,6 @@ return encodeURIComponent(Text);
 return decodeURIComponent(Text);
 }
 }  
-MEEP.CookieClicker = function() {
-Game.ObjectsById.forEach(function (e){
-e.basePrice=0;e.refresh();
-});
-Game.storeToRebuild=1;
-for(var i=0;i<1000;i++){
-Game.UpgradesById[i].basePrice=0;
-}
-Game.upgradesToRebuild=1;
-Game.Unlock(Game.UpgradesById[333].name);
-  Game.Unlock(Game.UpgradesById[361].name);
-  Game.Unlock(Game.UpgradesById[414].name);
-  Game.Unlock(Game.UpgradesById[765].name);
-  Game.Unlock(Game.UpgradesById[182].name);
-  Game.Unlock(Game.UpgradesById[183].name);
-  Game.Unlock(Game.UpgradesById[184].name);
-  Game.Unlock(Game.UpgradesById[185].name);
-  Game.Unlock(Game.UpgradesById[209].name);
-  Game.Unlock(Game.UpgradesById[186].name);
-    var goldenCookieInterval = setInterval(() => {
-  const goldenCookies = [].slice.call(document.querySelectorAll("#shimmers .shimmer"));
-
-  if (goldenCookies.length) {
-    goldenCookies.forEach(goldenCookie => {
-      if (goldenCookie.style.backgroundImage.indexOf("wrath") === -1) {
-        goldenCookie.click();
-      }
-    });
-  }
-}, 2e3);
-  if(window._activeClickInterval) {
-    clearInterval(window._activeClickInterval); 
-    delete window._activeClickInterval
-  }else{
-    window._activeClickInterval = setInterval(Game.ClickCookie,0)
-  }
-}
 return MEEP;
 }
 
