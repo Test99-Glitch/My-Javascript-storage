@@ -1,14 +1,14 @@
-function defineMEEP() {
-    var MEEP = {};
+function defineJavaScriptPlus() {
+    var JavaScriptPlus = {};
 
-    MEEP.LoadScript = function (Link, Id) {
+    JavaScriptPlus.LoadScript = function (Link, Id) {
         var LoadScript = document.createElement('script');
         LoadScript.src = Link;
         LoadScript.id = Id;
         document.body.appendChild(LoadScript);
     };
 
-    MEEP.RemoveScript = function (Id) {
+    JavaScriptPlus.RemoveScript = function (Id) {
         var RemoveScript = document.getElementById(Id);
         if (RemoveScript) {
             if (RemoveScript.tagName == 'script') {
@@ -21,7 +21,7 @@ function defineMEEP() {
         }
     };
 
-    MEEP.Edit = function (Bool) {
+    JavaScriptPlus.Edit = function (Bool) {
         if (Bool !== 'toggle' && Bool !== true && Bool !== false) {
             return;
         } else if (Bool !== 'toggle' && (Bool === true || Bool === false)) {
@@ -31,7 +31,7 @@ function defineMEEP() {
         }
     };
 
-    MEEP.EditElement = function (Bool, Id) {
+    JavaScriptPlus.EditElement = function (Bool, Id) {
         var EditElement = document.getElementById(Id);
         if (EditElement) {
             if (Bool !== 'toggle' && Bool !== true && Bool !== false) {
@@ -45,20 +45,20 @@ function defineMEEP() {
             return;
         }
     };
-    MEEP.AddVar = function (N, V) {
+    JavaScriptPlus.AddVar = function (N, V) {
         window[N] = V;
     };
-    MEEP.RemoveVar = function (N) {
+    JavaScriptPlus.RemoveVar = function (N) {
         delete window[N];
     };
-    MEEP.GetVar = function (N) {
+    JavaScriptPlus.GetVar = function (N) {
         if (typeof window[N] === 'undefined') {
             return;
         } else {
             return window[N];
         }
     };
-    MEEP.EAD = function (Text, Type) {
+    JavaScriptPlus.EAD = function (Text, Type) {
         if (Type !== 'encode' && Type !== 'decode') {
             return;
         } else if (Type == 'encode') {
@@ -67,7 +67,7 @@ function defineMEEP() {
             return decodeURIComponent(Text);
         }
     };
-    MEEP.LoadLink = function (Link) {
+    JavaScriptPlus.LoadLink = function (Link) {
         if (Link) {
             var LoadLink = document.createElement('a');
             LoadLink.href = Link;
@@ -78,7 +78,7 @@ function defineMEEP() {
             return;
         }
     };
-    MEEP.CreateTooltip = function () {
+    JavaScriptPlus.CreateTooltip = function () {
         var tooltip = document.querySelector('#MEEP-Tooltip');
         if (!tooltip) {
             tooltip = document.createElement('div');
@@ -105,7 +105,7 @@ function defineMEEP() {
             }
         });
     };
-    MEEP.ToggleTooltip = function () {
+    JavaScriptPlus.ToggleTooltip = function () {
         var tooltip = document.getElementById('MEEP-Tooltip');
         var tooltipVisible = '?';
         if (tooltip) {
@@ -120,7 +120,7 @@ function defineMEEP() {
             return;
         }
     };
-    MEEP.State = function (Type) {
+    JavaScriptPlus.State = function (Type) {
         if (Type == 'save') {
             localStorage.setItem('SavedState', document.documentElement.innerHTML);
         } else if (Type == 'load') {
@@ -132,18 +132,18 @@ function defineMEEP() {
             }
         }
     };
-    MEEP.JS = function (code) {
+    JavaScriptPlus.JS = function (code) {
         eval(code);
     };
-    MEEP.HTML = function (code) {
+    JavaScriptPlus.HTML = function (code) {
         document.documentElement.innerHTML = code;
     };
-    MEEP.CSS = function (code) {
+    JavaScriptPlus.CSS = function (code) {
         var style = document.createElement('style');
         style.innerHTML = code;
         document.documentElement.appendChild(style);
     };
-    MEEP.Test = function (code) {
+    JavaScriptPlus.Test = function (code) {
         var Test = eval(code)
         if (Test == error) {
             return 'error';
@@ -151,6 +151,6 @@ function defineMEEP() {
             return 'no error';
         }
     };
-    return MEEP;
+    return JavaScriptPlus;
 }
-window.MEEP = defineMEEP();
+window.JavaScriptPlus = defineJavaScriptPlus();
