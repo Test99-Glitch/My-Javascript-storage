@@ -11,7 +11,13 @@ function defineMEEP() {
   MEEP.RemoveScript = function(Id) {
     var RemoveScript = document.getElementById(Id);
     if (RemoveScript) {
+      if (RemoveScript.tagName == 'script') {
       RemoveScript.remove();
+      } else {
+      return;
+      }
+    } else {
+    return;
     }
   };
 
