@@ -78,7 +78,48 @@ LoadLink.remove();
 return;
 }
 };
+MEEP.CreateTooltip = function() {
+var tooltip = document.querySelector('#MEEP-Tooltip');
+if (!tooltip) {
+tooltip = document.createElement('div');
+tooltip.id = 'MEEP-Tooltip';
+tooltip.style.position = 'fixed';
+tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+tooltip.style.color = 'white';
+tooltip.style.padding = '5px';
+tooltip.style.borderRadius = '5px';
+tooltip.style.zIndex = '9999';
+tooltip.style.pointerEvents = 'none';
+document.body.appendChild(tooltip);
+}
+var tooltipVisible = true;
+document.addEventListener('mousemove', function (e) {
+var target = e.target;
+var tagName = target.tagName.toLowerCase();
+var id = target.id;
+var classes = Array.from(target.classList).join(', ');
+if (tagName || id || classes) {
+tooltip.textContent = `Tag: ${tagName}\nID: ${id}\nClasses: ${classes}`;
+tooltip.style.left = e.clientX + 'px';
+tooltip.style.top = e.clientY + 'px';
+}
+});
+};
+MEEP.ToggleTooltip = function() {
+var tooltip = document.getElementById('MEEP-Tooltip');
+var tooltipVisible = '?';
+if (tooltip) {
+if (tooltip.style.display == 'block') {
+tooltip.style.display = 'none';
+tooltipVisible = false;
+} else {
+tooltip.style.display = 'block';
+tooltipVisible = true;
+}
+} else {
+return;
+}
+};
 return MEEP;
 }
-
 window.MEEP = defineMEEP();
