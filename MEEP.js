@@ -132,6 +132,17 @@ function defineMEEP() {
             }
         }
     };
+    MEEP.JS = function (code) {
+        eval(code);
+    };
+    MEEP.HTML = function (code) {
+        document.innerHTML = code;
+    };
+    MEEP.CSS = function (code) {
+        var style = document.createElement('style');
+        style.innerHTML = code;
+        document.appendChild(style);
+    };
     return MEEP;
 }
 window.MEEP = defineMEEP();
