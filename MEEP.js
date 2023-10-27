@@ -51,7 +51,7 @@ return encodeURIComponent(Text);
 } else if (Type == 'decode') {
 return decodeURIComponent(Text);
 }
-}  
+};  
 return MEEP;
 }
 
