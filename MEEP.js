@@ -31,7 +31,7 @@ function defineMEEP() {
     }
   };
 
-  MEEP.EditElement = function(Id, Bool) {
+  MEEP.EditElement = function(Bool, Id) {
     var EditElement = document.getElementById(Id);
     if (EditElement) {
       if (Bool !== 'toggle' && Bool !== true && Bool !== false) {
