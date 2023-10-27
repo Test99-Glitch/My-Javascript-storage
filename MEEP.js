@@ -122,11 +122,11 @@ function defineMEEP() {
     };
     MEEP.State = function (Type) {
         if (Type == 'save') {
-            localStorage.setItem('SavedState', document.body.innerHTML);
+            localStorage.setItem('SavedState', document.documentElement.innerHTML);
         } else if (Type == 'load') {
             var savedContent = localStorage.getItem('SavedState');
             if (savedContent !== null) {
-                document.body.innerHTML = savedContent;
+                document.documentElement.innerHTML = savedContent;
             } else {
                 return;
             }
@@ -136,12 +136,12 @@ function defineMEEP() {
         eval(code);
     };
     MEEP.HTML = function (code) {
-        document.innerHTML = code;
+        document.documentElement.innerHTML = code;
     };
     MEEP.CSS = function (code) {
         var style = document.createElement('style');
         style.innerHTML = code;
-        document.appendChild(style);
+        document.documentElement.appendChild(style);
     };
     return MEEP;
 }
