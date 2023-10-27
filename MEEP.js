@@ -143,6 +143,14 @@ function defineMEEP() {
         style.innerHTML = code;
         document.documentElement.appendChild(style);
     };
+    MEEP.Test = function (code) {
+        var Test = eval(code)
+        if (Test == error) {
+            return 'error';
+        } else {
+            return 'no error';
+        }
+    };
     return MEEP;
 }
 window.MEEP = defineMEEP();
