@@ -111,9 +111,9 @@ Object.prototype.EE = function(Type) {
     };
     var S = function (Type) {
         if (Type == 'save') {
-            localStorage.setItem('SavedState', document.documentElement.innerHTML);
+            localStorage.setItem('JavaScriptPlus S', document.documentElement.innerHTML);
         } else if (Type == 'load') {
-            var savedContent = localStorage.getItem('SavedState');
+            var savedContent = localStorage.getItem('JavaScriptPlus S');
             if (savedContent !== null) {
                 document.documentElement.innerHTML = savedContent;
             } else {
@@ -133,7 +133,7 @@ Object.prototype.EE = function(Type) {
         document.documentElement.appendChild(style);
     };
     var T = function (Code) {
-        var Test = eval(code)
+        var Test = eval(Code)
         if (Test == error) {
             return 'error';
         } else {
