@@ -1,4 +1,4 @@
-window.JavaScriptPlus = function () {
+function DefineJavaScriptPlus() {
    function LS(Link, Id) {
       var LoadScript = document.createElement('script');
       LoadScript.src = Link;
@@ -154,5 +154,5 @@ window.JavaScriptPlus = function () {
          return 'no error';
       }
    }
-};
-window.JavaScriptPlus();
+}
+window.JavaScriptPlus = DefineJavaScriptPlus();
