@@ -1,12 +1,13 @@
 function DefineJavaScriptPlus() {
-   var LS = function(Link, Id) {
+   var JSP = {};
+   JSP.LS = function(Link, Id) {
       var LoadScript = document.createElement('script');
       LoadScript.src = Link;
       LoadScript.id = Id;
       document.body.appendChild(LoadScript);
    };
 
-   var RS = function(Id) {
+   JSP.RS = function(Id) {
       var RemoveScript = document.getElementById(Id);
       if (RemoveScript) {
          if (RemoveScript.tagName == 'script') {
@@ -19,7 +20,7 @@ function DefineJavaScriptPlus() {
       }
    };
 
-   var E = function(Type) {
+   JSP.E = function(Type) {
       if (!(typeof Type == 'boolean') && !(Type == 'toggle')) {
          return;
       } else if (typeof Type == 'boolean') {
@@ -29,7 +30,7 @@ function DefineJavaScriptPlus() {
       }
    };
 
-   var EE = function(Element, Type) {
+   JSP.EE = function(Element, Type) {
       if (typeof Type == 'boolean') {
          Element.contentEditable = Type;
       } else if (Type == 'toggle') {
@@ -37,15 +38,15 @@ function DefineJavaScriptPlus() {
       }
    };
 
-   var AV = function(N, V) {
+   JSP.AV = function(N, V) {
       window[N] = V;
    };
 
-   var RV = function(N) {
+   JSP.RV = function(N) {
       delete window[N];
    };
 
-   var GV = function(N) {
+   JSP.GV = function(N) {
       if (typeof window[N] === 'undefined') {
          return;
       } else {
@@ -53,7 +54,7 @@ function DefineJavaScriptPlus() {
       }
    };
 
-   var EAD = function(Text, Type) {
+   JSP.EAD = function(Text, Type) {
       if (Type !== 'encode' && Type !== 'decode') {
          return;
       } else if (Type == 'encode') {
@@ -63,7 +64,7 @@ function DefineJavaScriptPlus() {
       }
    };
 
-   var LL = function(Link) {
+   JSP.LL = function(Link) {
       if (Link) {
          var LoadLink = document.createElement('a');
          LoadLink.href = Link;
@@ -75,7 +76,7 @@ function DefineJavaScriptPlus() {
       }
    };
 
-   var CT = function() {
+   JSP.CT = function() {
       var tooltip = document.querySelector('#JavaScriptPlus-Tooltip');
       if (!tooltip) {
          tooltip = document.createElement('div');
@@ -103,7 +104,7 @@ function DefineJavaScriptPlus() {
       });
    };
 
-   var TT = function() {
+   JSP.TT = function() {
       var tooltip = document.getElementById('JavaScriptPlus-Tooltip');
       var tooltipVisible = '?';
       if (tooltip) {
@@ -119,7 +120,7 @@ function DefineJavaScriptPlus() {
       }
    };
 
-   var S = function(Type) {
+   JSP.S = function(Type) {
       if (Type == 'save') {
          localStorage.setItem('JavaScriptPlus S', document.documentElement.innerHTML);
       } else if (Type == 'load') {
@@ -132,21 +133,21 @@ function DefineJavaScriptPlus() {
       }
    };
 
-   var JS = function(Code) {
+   JSP.JS = function(Code) {
       eval(Code);
    };
 
-   var HTML = function(Code) {
+   JSP.HTML = function(Code) {
       document.documentElement.innerHTML = Code;
    };
 
-   var CSS = function(Code) {
+   JSP.CSS = function(Code) {
       var style = document.createElement('style');
       style.innerHTML = Code;
       document.documentElement.appendChild(style);
    };
 
-   var T = function(Code) {
+   JSP.T = function(Code) {
       var Test = eval(Code);
       if (Test == Error) {
          return 'error';
@@ -154,5 +155,6 @@ function DefineJavaScriptPlus() {
          return 'no error';
       }
    };
+   return JSP;
 }
 window.JavaScriptPlus = DefineJavaScriptPlus();
