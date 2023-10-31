@@ -18,19 +18,19 @@ function defineJavaScriptPlus() {
         }
     };
 
-    var E = function (Bool) {
-        if (Bool !== 'toggle' && Bool !== true && Bool !== false) {
+    var E = function (Type) {
+        if (!(typeof Type == 'boolean') && !(Type == 'toggle')) {
             return;
-        } else if (Bool !== 'toggle' && (Bool === true || Bool === false)) {
-            document.documentElement.contentEditable = Bool;
-        } else if (Bool === 'toggle') {
-            document.documentElement.contentEditable = document.documentElement.contentEditable === 'false' ? 'true' : 'false';
+        } else if (typeof Type == 'boolean') {
+            document.documentElement.contentEditable = Type;
+        } else if (Type == 'toggle') {
+            document.documentElement.contentEditable = !document.documentElement.contentEditable;
         }
     };
-Object.prototype.EE = function(type) {
-  if (typeof type == 'boolean') {
-    this.contentEditable = type;
-  } else if (type == 'toggle') {
+Object.prototype.EE = function(Type) {
+  if (typeof Type == 'boolean') {
+    this.contentEditable = Type;
+  } else if (Type == 'toggle') {
     this.contentEditable = !this.contentEditable;
   }
 };
