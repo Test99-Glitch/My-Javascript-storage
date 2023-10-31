@@ -1,12 +1,12 @@
 function DefineJavaScriptPlus() {
-   function LS(Link, Id) {
+   var LS = function(Link, Id) {
       var LoadScript = document.createElement('script');
       LoadScript.src = Link;
       LoadScript.id = Id;
       document.body.appendChild(LoadScript);
-   }
+   };
 
-   function RS(Id) {
+   var RS = function(Id) {
       var RemoveScript = document.getElementById(Id);
       if (RemoveScript) {
          if (RemoveScript.tagName == 'script') {
@@ -17,9 +17,9 @@ function DefineJavaScriptPlus() {
       } else {
          return;
       }
-   }
+   };
 
-   function E(Type) {
+   var E = function(Type) {
       if (!(typeof Type == 'boolean') && !(Type == 'toggle')) {
          return;
       } else if (typeof Type == 'boolean') {
@@ -27,33 +27,33 @@ function DefineJavaScriptPlus() {
       } else if (Type == 'toggle') {
          document.documentElement.contentEditable = !document.documentElement.contentEditable;
       }
-   }
+   };
 
-   function EE(Element, Type) {
+   var EE = function(Element, Type) {
       if (typeof Type == 'boolean') {
          Element.contentEditable = Type;
       } else if (Type == 'toggle') {
          Element.contentEditable = !Element.contentEditable;
       }
-   }
+   };
 
-   function AV(N, V) {
+   var AV = function(N, V) {
       window[N] = V;
-   }
+   };
 
-   function RV(N) {
+   var RV = function(N) {
       delete window[N];
-   }
+   };
 
-   function GV(N) {
+   var GV = function(N) {
       if (typeof window[N] === 'undefined') {
          return;
       } else {
          return window[N];
       }
-   }
+   };
 
-   function EAD(Text, Type) {
+   var EAD = function(Text, Type) {
       if (Type !== 'encode' && Type !== 'decode') {
          return;
       } else if (Type == 'encode') {
@@ -61,9 +61,9 @@ function DefineJavaScriptPlus() {
       } else if (Type == 'decode') {
          return decodeURIComponent(Text);
       }
-   }
+   };
 
-   function LL(Link) {
+   var LL = function(Link) {
       if (Link) {
          var LoadLink = document.createElement('a');
          LoadLink.href = Link;
@@ -73,9 +73,9 @@ function DefineJavaScriptPlus() {
       } else {
          return;
       }
-   }
+   };
 
-   function CT() {
+   var CT = function() {
       var tooltip = document.querySelector('#JavaScriptPlus-Tooltip');
       if (!tooltip) {
          tooltip = document.createElement('div');
@@ -101,9 +101,9 @@ function DefineJavaScriptPlus() {
             tooltip.style.top = e.clientY + 'px';
          }
       });
-   }
+   };
 
-   function TT() {
+   var TT = function() {
       var tooltip = document.getElementById('JavaScriptPlus-Tooltip');
       var tooltipVisible = '?';
       if (tooltip) {
@@ -117,9 +117,9 @@ function DefineJavaScriptPlus() {
       } else {
          return;
       }
-   }
+   };
 
-   function S(Type) {
+   var S = function(Type) {
       if (Type == 'save') {
          localStorage.setItem('JavaScriptPlus S', document.documentElement.innerHTML);
       } else if (Type == 'load') {
@@ -130,29 +130,29 @@ function DefineJavaScriptPlus() {
             return;
          }
       }
-   }
+   };
 
-   function JS(Code) {
+   var JS = function(Code) {
       eval(Code);
-   }
+   };
 
-   function HTML(Code) {
+   var HTML = function(Code) {
       document.documentElement.innerHTML = Code;
-   }
+   };
 
-   function CSS(Code) {
+   var CSS = function(Code) {
       var style = document.createElement('style');
       style.innerHTML = Code;
       document.documentElement.appendChild(style);
-   }
+   };
 
-   function T(Code) {
-      var Test = eval(Code)
-      if (Test == error) {
+   var T = function(Code) {
+      var Test = eval(Code);
+      if (Test == Error) {
          return 'error';
       } else {
          return 'no error';
       }
-   }
+   };
 }
 window.JavaScriptPlus = DefineJavaScriptPlus();
