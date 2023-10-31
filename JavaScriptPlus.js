@@ -157,4 +157,4 @@ function DefineJavaScriptPlus() {
    };
    return JSP;
 }
-window.JavaScriptPlus = DefineJavaScriptPlus();
+window.JSP = DefineJavaScriptPlus();
