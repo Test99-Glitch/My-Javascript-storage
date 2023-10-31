@@ -1,14 +1,11 @@
 function defineJavaScriptPlus() {
-    var JavaScriptPlus = {};
-
-    JavaScriptPlus.LoadScript = function (Link, Id) {
+    var LS = function (Link, Id) {
         var LoadScript = document.createElement('script');
         LoadScript.src = Link;
         LoadScript.id = Id;
         document.body.appendChild(LoadScript);
     };
-
-    JavaScriptPlus.RemoveScript = function (Id) {
+    var RS = function (Id) {
         var RemoveScript = document.getElementById(Id);
         if (RemoveScript) {
             if (RemoveScript.tagName == 'script') {
@@ -21,7 +18,7 @@ function defineJavaScriptPlus() {
         }
     };
 
-    JavaScriptPlus.Edit = function (Bool) {
+    var E = function (Bool) {
         if (Bool !== 'toggle' && Bool !== true && Bool !== false) {
             return;
         } else if (Bool !== 'toggle' && (Bool === true || Bool === false)) {
@@ -30,35 +27,27 @@ function defineJavaScriptPlus() {
             document.documentElement.contentEditable = document.documentElement.contentEditable === 'false' ? 'true' : 'false';
         }
     };
-
-    JavaScriptPlus.EditElement = function (Bool, Id) {
-        var EditElement = document.getElementById(Id);
-        if (EditElement) {
-            if (Bool !== 'toggle' && Bool !== true && Bool !== false) {
-                return;
-            } else if (Bool !== 'toggle' && (Bool === true || Bool === false)) {
-                EditElement.contentEditable = Bool;
-            } else if (Bool === 'toggle') {
-                EditElement.contentEditable = EditElement.contentEditable === 'false' ? 'true' : 'false';
-            }
-        } else {
-            return;
-        }
-    };
-    JavaScriptPlus.AddVar = function (N, V) {
+Object.prototype.EE = function(type) {
+  if (typeof type == 'boolean') {
+    this.contentEditable = type;
+  } else if (type == 'toggle') {
+    this.contentEditable = !this.contentEditable;
+  }
+};
+    var AV = function (N, V) {
         window[N] = V;
     };
-    JavaScriptPlus.RemoveVar = function (N) {
+    var RV = function (N) {
         delete window[N];
     };
-    JavaScriptPlus.GetVar = function (N) {
+    var GV = function (N) {
         if (typeof window[N] === 'undefined') {
             return;
         } else {
             return window[N];
         }
     };
-    JavaScriptPlus.EAD = function (Text, Type) {
+    var EAD = function (Text, Type) {
         if (Type !== 'encode' && Type !== 'decode') {
             return;
         } else if (Type == 'encode') {
@@ -67,7 +56,7 @@ function defineJavaScriptPlus() {
             return decodeURIComponent(Text);
         }
     };
-    JavaScriptPlus.LoadLink = function (Link) {
+    var LL = function (Link) {
         if (Link) {
             var LoadLink = document.createElement('a');
             LoadLink.href = Link;
@@ -78,11 +67,11 @@ function defineJavaScriptPlus() {
             return;
         }
     };
-    JavaScriptPlus.CreateTooltip = function () {
-        var tooltip = document.querySelector('#MEEP-Tooltip');
+    var CT = function () {
+        var tooltip = document.querySelector('#JavaScriptPlus-Tooltip');
         if (!tooltip) {
             tooltip = document.createElement('div');
-            tooltip.id = 'MEEP-Tooltip';
+            tooltip.id = 'JavaScriptPlus-Tooltip';
             tooltip.style.position = 'fixed';
             tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
             tooltip.style.color = 'white';
@@ -105,8 +94,8 @@ function defineJavaScriptPlus() {
             }
         });
     };
-    JavaScriptPlus.ToggleTooltip = function () {
-        var tooltip = document.getElementById('MEEP-Tooltip');
+    var TT = function () {
+        var tooltip = document.getElementById('JavaScriptPlus-Tooltip');
         var tooltipVisible = '?';
         if (tooltip) {
             if (tooltip.style.display == 'block') {
@@ -120,7 +109,7 @@ function defineJavaScriptPlus() {
             return;
         }
     };
-    JavaScriptPlus.State = function (Type) {
+    var S = function (Type) {
         if (Type == 'save') {
             localStorage.setItem('SavedState', document.documentElement.innerHTML);
         } else if (Type == 'load') {
@@ -132,18 +121,18 @@ function defineJavaScriptPlus() {
             }
         }
     };
-    JavaScriptPlus.JS = function (code) {
+    var JS = function (Code) {
         eval(code);
     };
-    JavaScriptPlus.HTML = function (code) {
+    var HTML = function (Code) {
         document.documentElement.innerHTML = code;
     };
-    JavaScriptPlus.CSS = function (code) {
+    var CSS = function (Code) {
         var style = document.createElement('style');
         style.innerHTML = code;
         document.documentElement.appendChild(style);
     };
-    JavaScriptPlus.Test = function (code) {
+    var T = function (Code) {
         var Test = eval(code)
         if (Test == error) {
             return 'error';
@@ -151,6 +140,5 @@ function defineJavaScriptPlus() {
             return 'no error';
         }
     };
-    return JavaScriptPlus;
 }
 window.JavaScriptPlus = defineJavaScriptPlus();
