@@ -1,5 +1,5 @@
-function defineJavaScriptPlus() {
-    var LS = function (Link, Id) {
+window.JavaScriptPlus = function() {
+     var LS = function (Link, Id) {
         var LoadScript = document.createElement('script');
         LoadScript.src = Link;
         LoadScript.id = Id;
@@ -122,14 +122,14 @@ Object.prototype.EE = function(Type) {
         }
     };
     var JS = function (Code) {
-        eval(code);
+        eval(Code);
     };
     var HTML = function (Code) {
-        document.documentElement.innerHTML = code;
+        document.documentElement.innerHTML = Code;
     };
     var CSS = function (Code) {
         var style = document.createElement('style');
-        style.innerHTML = code;
+        style.innerHTML = Code;
         document.documentElement.appendChild(style);
     };
     var T = function (Code) {
@@ -139,6 +139,6 @@ Object.prototype.EE = function(Type) {
         } else {
             return 'no error';
         }
-    };
-}
-window.JavaScriptPlus = defineJavaScriptPlus();
+    };   
+};
+window.JavaScriptPlus();
