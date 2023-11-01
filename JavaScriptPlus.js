@@ -137,8 +137,9 @@ function DefineJavaScriptPlus() {
       eval(Code);
    };
 
-   JSP.HTML = function(Code) {
-      document.documentElement.innerHTML = Code;
+   JSP.HTML = function(Head, Body) {
+      document.head.innerHTML = Head;
+      document.body.innerHTML = Body;
    };
 
    JSP.CSS = function(Code) {
