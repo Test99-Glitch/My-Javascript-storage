@@ -129,24 +129,24 @@ function DefineJavaScriptPlus() {
     document.documentElement.appendChild(style);
   };
   JSP.TS = function(Code) {
-    var ts = document.createElement('script');
-    ts.src = 'https://cdn.jsdelivr.net/npm/typescript@latest/lib/typescript.js';
-    ts.onload = function() {
+    var typescript = document.createElement('script');
+    typescript.src = 'https://cdn.jsdelivr.net/npm/typescript@latest/lib/typescript.js';
+    typescript.onload = function() {
       var result = ts.transpile(Code);
       eval(result);
     };
-    document.body.appendChild(ts);
-    ts.remove();
+    document.body.appendChild(typescript);
+    typescript.remove();
   };
   JSP.CS = function(Code) {
-    var cs = document.createElement('script');
-    cs.src = 'https://cdn.jsdelivr.net/npm/coffeescript@latest/extras/coffeescript.js';
-    cs.onload = function() {
+    var coffeescript = document.createElement('script');
+    coffeescript.src = 'https://cdn.jsdelivr.net/npm/coffeescript@latest/lib/coffeescript-browser-compiler-legacy/coffeescript.js';
+    coffeescript.onload = function() {
       var result = CoffeeScript.compile(Code);
       eval(result);
     };
-    document.body.appendChild(cs);
-    cs.remove();
+    document.body.appendChild(coffeescript);
+    coffeescript.remove();
   };
   JSP.T = function(Code) {
     var Test = eval(Code);
