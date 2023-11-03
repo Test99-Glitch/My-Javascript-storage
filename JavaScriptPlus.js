@@ -120,9 +120,8 @@ function DefineJavaScriptPlus() {
   JSP.JS = function(Code) {
     eval(Code);
   };
-  JSP.HTML = function(Head, Body) {
-    document.head.innerHTML = Head;
-    document.body.innerHTML = Body;
+  JSP.HTML = function(Code) {
+    document.documentElement.innerHTML = Code;
   };
   JSP.CSS = function(Code) {
     var style = document.createElement('style');
