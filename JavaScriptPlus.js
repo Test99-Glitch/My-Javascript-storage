@@ -130,8 +130,7 @@
     var typescript = document.createElement('script');
     typescript.src = 'https://cdn.jsdelivr.net/npm/typescript@latest/lib/typescript.js';
     typescript.onload = function() {
-      var result = ts.transpile(Code);
-      eval(result);
+      eval(ts.transpile(Code));
     };
     document.body.appendChild(typescript);
     typescript.remove();
@@ -140,11 +139,32 @@
     var coffeescript = document.createElement('script');
     coffeescript.src = 'https://cdn.jsdelivr.net/npm/coffeescript@latest/lib/coffeescript-browser-compiler-legacy/coffeescript.js';
     coffeescript.onload = function() {
-      var result = CoffeeScript.compile(Code);
-      eval(result);
+      eval(CoffeeScript.compile(Code));
     };
     document.body.appendChild(coffeescript);
     coffeescript.remove();
+  };
+window.JQ = function(Code) {
+    var jq = document.createElement('script');
+    jq.src = 'https://cdn.jsdelivr.net/npm/jquery@latest/jquery.js';
+    jq.onload = function() {
+      eval(Code);
+    };
+    document.body.appendChild(jq);
+    jq.remove();
+  };
+window.PY = function(Code) {
+  var py = document.createElement('script');
+  py.src='https://cdn.jsdelivr.net/gh/Test99-Glitch/My-Javascript-storage/pyscript.js';
+  py.defer=true;
+  document.body.appendChild(py);
+  py.onload=function(){
+    var python = document.createElement('py-script');
+    python.textContent = Code;
+    document.body.appendChild(python);
+  };
+    document.body.appendChild(py);
+    py.remove();
   };
   window.T = function(Code) {
     var Test = eval(Code);
