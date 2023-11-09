@@ -1,12 +1,10 @@
-function DefineJavaScriptPlus() {
-  var JSP = {};
-  JSP.LS = function(Link, Id) {
+  window.LS = function(Link, Id) {
     var LoadScript = document.createElement('script');
     LoadScript.src = Link;
     LoadScript.id = Id;
     document.body.appendChild(LoadScript);
   };
-  JSP.RS = function(Id) {
+  window.RS = function(Id) {
     var RemoveScript = document.getElementById(Id);
     if (RemoveScript) {
       if (RemoveScript.tagName === 'script') {
@@ -18,7 +16,7 @@ function DefineJavaScriptPlus() {
       return;
     }
   };
-  JSP.E = function(Type) {
+  window.E = function(Type) {
     if (!(typeof Type === 'boolean') && !(Type === 'toggle')) {
       return;
     } else if (typeof Type === 'boolean') {
@@ -27,27 +25,27 @@ function DefineJavaScriptPlus() {
       document.documentElement.contentEditable = !document.documentElement.contentEditable;
     }
   };
-  JSP.EE = function(Element, Type) {
+  window.EE = function(Element, Type) {
     if (typeof Type === 'boolean') {
       Element.contentEditable = Type;
     } else if (Type === 'toggle') {
       Element.contentEditable = !Element.contentEditable;
     }
   };
-  JSP.AV = function(N, V) {
+  window.AV = function(N, V) {
     window[N] = V;
   };
-  JSP.RV = function(N) {
+  window.RV = function(N) {
     delete window[N];
   };
-  JSP.GV = function(N) {
+  window.GV = function(N) {
     if (typeof window[N] === 'undefined') {
       return;
     } else {
       return window[N];
     }
   };
-  JSP.EAD = function(Text, Type) {
+  window.EAD = function(Text, Type) {
     if (Type !== 'encode' && Type !== 'decode') {
       return;
     } else if (Type === 'encode') {
@@ -56,7 +54,7 @@ function DefineJavaScriptPlus() {
       return decodeURIComponent(Text);
     }
   };
-  JSP.LL = function(Link) {
+  window.LL = function(Link) {
     if (Link) {
       var LoadLink = document.createElement('a');
       LoadLink.href = Link;
@@ -67,7 +65,7 @@ function DefineJavaScriptPlus() {
       return;
     }
   };
-  JSP.CT = function() {
+  window.CT = function() {
     var tooltip = document.querySelector('#JavaScriptPlus-Tooltip');
     if (!tooltip) {
       tooltip = document.createElement('div');
@@ -93,7 +91,7 @@ function DefineJavaScriptPlus() {
       }
     });
   };
-  JSP.TT = function() {
+  window.TT = function() {
     var tooltip = document.getElementById('JavaScriptPlus-Tooltip');
     if (tooltip) {
       if (tooltip.style.display === 'block') {
@@ -105,7 +103,7 @@ function DefineJavaScriptPlus() {
       return;
     }
   };
-  JSP.S = function(Type) {
+  window.S = function(Type) {
     if (Type === 'save') {
       localStorage.setItem('JavaScriptPlus S', document.documentElement.innerHTML);
     } else if (Type === 'load') {
@@ -117,18 +115,18 @@ function DefineJavaScriptPlus() {
       }
     }
   };
-  JSP.JS = function(Code) {
+  window.JS = function(Code) {
     eval(Code);
   };
-  JSP.HTML = function(Code) {
+  window.HTML = function(Code) {
     document.documentElement.innerHTML = Code;
   };
-  JSP.CSS = function(Code) {
+  window.CSS = function(Code) {
     var style = document.createElement('style');
     style.innerHTML = Code;
     document.documentElement.appendChild(style);
   };
-  JSP.TS = function(Code) {
+  window.TS = function(Code) {
     var typescript = document.createElement('script');
     typescript.src = 'https://cdn.jsdelivr.net/npm/typescript@latest/lib/typescript.js';
     typescript.onload = function() {
@@ -138,7 +136,7 @@ function DefineJavaScriptPlus() {
     document.body.appendChild(typescript);
     typescript.remove();
   };
-  JSP.CS = function(Code) {
+  window.CS = function(Code) {
     var coffeescript = document.createElement('script');
     coffeescript.src = 'https://cdn.jsdelivr.net/npm/coffeescript@latest/lib/coffeescript-browser-compiler-legacy/coffeescript.js';
     coffeescript.onload = function() {
@@ -148,7 +146,7 @@ function DefineJavaScriptPlus() {
     document.body.appendChild(coffeescript);
     coffeescript.remove();
   };
-  JSP.T = function(Code) {
+  window.T = function(Code) {
     var Test = eval(Code);
     if (Test === Error) {
       return 'error';
@@ -156,6 +154,3 @@ function DefineJavaScriptPlus() {
       return 'no error';
     }
   };
-  return JSP;
-}
-window.JSP = DefineJavaScriptPlus();
